@@ -2,10 +2,10 @@ class WeatherModel {
   final String cityName;
   final String timeupdated;
   final String image;
-  final String temp;
-  final String maxtemp;
-  final String mintemp;
-  final String status;
+  final double temp;
+  final double maxtemp;
+  final double mintemp;
+  final String condition;
 
   WeatherModel({
     required this.cityName,
@@ -14,7 +14,7 @@ class WeatherModel {
     required this.temp,
     required this.maxtemp,
     required this.mintemp,
-    required this.status,
+    required this.condition,
   });
   factory WeatherModel.fromJson(data) {
     return WeatherModel(
@@ -24,7 +24,7 @@ class WeatherModel {
       temp: data['forecast']['forecastday'][0]['day']['avgtemp_c'],
       maxtemp: data['forecast']['forecastday'][0]['day']['maxtemp_c'],
       mintemp: data['forecast']['forecastday'][0]['day']['mintemp_c'],
-      status: data['forecast']['forecastday'][0]['day']['condition']['text'],
+      condition: data['forecast']['forecastday'][0]['day']['condition']['text'],
     );
   }
 }
