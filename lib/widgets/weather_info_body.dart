@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app20/models/weather_model.dart';
 
 class WeatherInfoBody extends StatelessWidget {
-  const WeatherInfoBody({super.key});
-
+  const WeatherInfoBody({super.key, required this.weatherModel});
+  final WeatherModel weatherModel;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -12,26 +13,31 @@ class WeatherInfoBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Alexandria",
+              weatherModel.cityName,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
             ),
-            Text("updated at : 22:25", style: TextStyle(fontSize: 20)),
+            Text(weatherModel.timeupdated, style: TextStyle(fontSize: 20)),
             SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
               children: [
-                Text("foto"),
+                Image.network(weatherModel.image),
                 Text(
-                  "17",
+                  weatherModel.temp.toString(),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
                 ),
-                Column(children: [Text("mintemp: 17"), Text("maxtemp: 5")]),
+                Column(
+                  children: [
+                    Text("mintemp: ${weatherModel.mintemp}"),
+                    Text("maxtemp: ${weatherModel.maxtemp}"),
+                  ],
+                ),
               ],
             ),
             SizedBox(height: 32),
             Text(
-              "sunny",
+              weatherModel.condition,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
             ),
           ],
