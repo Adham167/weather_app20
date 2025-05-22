@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app20/widgets/no_weather_body.dart';
 import 'package:weather_app20/views/search_view.dart';
 import 'package:weather_app20/widgets/weather_info_body.dart';
 
