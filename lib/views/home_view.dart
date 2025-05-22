@@ -33,10 +33,12 @@ class HomeView extends StatelessWidget {
           if (state is LoadingState) {
             return Center(child: CircularProgressIndicator());
           } else if (state is SuccessState) {
-           return WeatherInfoBody(
+            return WeatherInfoBody(
               weatherModel:
                   BlocProvider.of<WeatherCubit>(context).weatherModel!,
             );
+          } else if (state is FailureState) {
+            return Center(child: Text("There was an Error please try again"));
           } else {
             return NoWeatherBody();
           }

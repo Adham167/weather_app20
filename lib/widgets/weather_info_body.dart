@@ -16,21 +16,26 @@ class WeatherInfoBody extends StatelessWidget {
               weatherModel.cityName,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
             ),
-            Text(weatherModel.timeupdated, style: TextStyle(fontSize: 20)),
+            Text(
+              "Updated at ${weatherModel.timeupdated.hour}:${weatherModel.timeupdated.minute}",
+              style: TextStyle(fontSize: 20),
+            ),
             SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
               children: [
-                Image.network(weatherModel.image),
+                Image.network('https:${weatherModel.image}'),
                 Text(
                   weatherModel.temp.toString(),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
                 ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("mintemp: ${weatherModel.mintemp}"),
-                    Text("maxtemp: ${weatherModel.maxtemp}"),
+                    Text("mintemp: ${weatherModel.mintemp.round()}"),
+                    Text("maxtemp: ${weatherModel.maxtemp.round()}"),
                   ],
                 ),
               ],
